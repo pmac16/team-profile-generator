@@ -29,4 +29,3 @@ test('role is employee', () => {
     expect(employee.role).toBe('employee');
 })
 
-// test('role is employee')

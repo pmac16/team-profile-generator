@@ -1,11 +1,12 @@
-const { TestScheduler } = require('jest');
 const Employee = require('../lib/Employee.js');
+const Engineer = require('../lib/Engineer');
 
 jest.mock('../lib/Employee.js');
 
-test('has an office number', () => {
+test('has a github username', () => {
     const employee = new Employee('Dave');
 
-    expect(employee.officeNumber).toEqual(expect.any(Number));
+    expect(employee.github).toBe('pmac16');
 });
 
+//test to confirm role?
