@@ -1,8 +1,10 @@
 const inquirer = require("inquirer");
 const employee = [];
 const Manager = require('./lib/Manager');
+// const generatePage = require('./src/page-template')
 
-inquirer.prompt ([
+const managerPrompt = () => {
+    return inquirer.prompt ([
     {
         type:'input',
         name:'name',
@@ -30,16 +32,19 @@ inquirer.prompt ([
         employee.push(manager)
         console.log(employee);
 
+        //next inquirer prompt
+
 
     })
-
+};
 
 
 //menu option for engineer, intern, or finish
 
+
 //prompts for engineer information
 
-//menu option
+//menu option for intern or finish 
 
 //prompts for intern
 
