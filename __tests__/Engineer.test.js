@@ -6,7 +6,7 @@ jest.mock('../lib/Employee.js');
 test('has a github username', () => {
     const employee = new Employee('Dave');
 
-    expect(employee.github).toBe('pmac16');
+    expect(employee.github).toEqual(expect.any(String));
 });
 
 
