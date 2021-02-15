@@ -1,9 +1,12 @@
 const inquirer = require("inquirer");
-const employee = [];
+let employee = [];
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const fs = require('fs');
+const generatePage= require('./src/page-template')
 
-const managerAnswers = () => {
+const openingPrompts = () => {
     return inquirer.prompt ([
     {
         type:'input',
@@ -28,10 +31,8 @@ const managerAnswers = () => {
     ])
 
     .then((managerAnswers) => {
-        //push the data
         const manager = new Manager(managerAnswers.name, managerAnswers.email, managerAnswers.id, managerAnswers.officeNumber);
         employee.push(manager);
-        console.log(employee)
         menuOptions();
         
     })
@@ -55,11 +56,10 @@ const menuOptions = () => {
         } else  if (menuAnswer.role === 'Intern') {
             InternPrompts();
         } else {
-            console.log(employee)
-            //render the site 
-    }
+            console.log(employee);
+            writeToFile(employee);
+            }       
     })
-    
 };
 
 const EngineerPrompts = () => {
@@ -128,48 +128,16 @@ const InternPrompts = () => {
     })
 };
 
+function writeToFile() {
+    fs.writeFile('./index.html', generatePage(employee), err => {
+        if(err) throw err;
 
-    
+        console.log('Page complete.')
+    })
+}
 
 
-
-  
-
-
-
-// const engineerInfo = () => {
-//     return inquirer.prompt ([
-//         {
-//             type:'input',
-//             name:'name',
-//             message:"What is the engineer's name?"
-//         },
-//         {
-//             type:"input",
-//             name: 'id',
-//             message: "What is the engineer's Id number?"
-//         },
-//         {
-//             type: 'input',
-//             name: 'email',
-//             message: "What is the engineer's email address?"
-//         },
-//         {
-//             type: 'input',
-//             name: 'github',
-//             message: "What is the engineer's GitHub username?"
-//         },
-//         {
-//             type:'list',
-//             name: 'role',
-//             message: 'What teammate would you like to add next?',
-//             choice: ['Intern', 'I am done! Build myteam.']
-//         }
-// ])
-// }
-managerAnswers();
-
-//finish
+openingPrompts();
 
 
 
