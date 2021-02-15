@@ -1,4 +1,6 @@
 
+//issue 1: will not create multiple cards
+// issue 2: role and unique employee undefined 
 
     
 
@@ -11,22 +13,27 @@ const createCard = function (employee) {
             if (employee.role === "Manager") {
                return `Office Number: ${employee[i].officeNumber}`
             } else if (employee.role === "Engineer") {
-               return `GitHub Username: ${employee[i].github}`
+               return `GitHub Username: <a href="https://github.com/${employee[i].github}" target="_blank">${employee[i].github}</a>`
             } else if (employee.role === "Intern") {
                 return `School: ${employee[i].school}`
             }
         }
         
         return `<div class= "card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">${employee[i].name}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">${employee[i].title}</h6>
-                        <p 
-                        class="card-text">ID: ${employee[i].id}</p>
-                        <p class="card-text">Email: ${employee[i].email}</p>
-                        <p class="card-text">${employee[i].roleInfo}</p>
+                    <div class = "card-header card-title text-white bg-primary">
+                        ${employee[i].name}
+                        <br>
+                        Pic, Title
                     </div>
-                 </div>`
+                    <div class="card-body bg-light">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID: ${employee[i].id}</li>
+                        <li class="list-group-item"><a href = "mailto: ${employee[i].email}">Email: ${employee[i].email}</a></li>
+                        <li class="list-group-item">${employee[i].roleInfo}</li>
+                     </ul>
+                </div>`
+                    
+           
     }
 }
 
@@ -46,7 +53,7 @@ const generatePage = function(employee) {
   
     <body>
         <header>
-            <h1 class = "mt-3 text-center">My Team</h1>
+            <h1 class = "mt-3 text-center text-white bg-danger">My Team</h1>
         </header>
         <main>
 
