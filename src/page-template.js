@@ -2,39 +2,38 @@
 //issue 1: will not create multiple cards
 // issue 2: role and unique employee undefined 
 
-    
+//icon script
+
+roleInfo = (employee) => {
+    if (employee.getRole() === "Manager") {
+       return `Office Number: ${employee.officeNumber}`
+    } else if (employee.getRole() === "Engineer") {
+       return `GitHub Username: <a href="https://github.com/${employee.github}" target="_blank">${employee.github}</a>`
+    } else if (employee.getRole() === "Intern") {
+        return `School: ${employee.school}`
+    }
+}
 
 const createCard = function (employee) {
+    let card = '';
 
-   
     for (let i = 0; i < employee.length; i++) {
-
-        roleInfo = (employee) => {
-            if (employee.role === "Manager") {
-               return `Office Number: ${employee[i].officeNumber}`
-            } else if (employee.role === "Engineer") {
-               return `GitHub Username: <a href="https://github.com/${employee[i].github}" target="_blank">${employee[i].github}</a>`
-            } else if (employee.role === "Intern") {
-                return `School: ${employee[i].school}`
-            }
-        }
         
-        return `<div class= "card" style="width: 18rem;">
+        card += `<div class= "card d-flex justify-content-center" style="width: 18rem;">
                     <div class = "card-header card-title text-white bg-primary">
                         ${employee[i].name}
                         <br>
-                        Pic, Title
+                        Pic, ${employee[i].getRole()}
                     </div>
                     <div class="card-body bg-light">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">ID: ${employee[i].id}</li>
                         <li class="list-group-item"><a href = "mailto: ${employee[i].email}">Email: ${employee[i].email}</a></li>
-                        <li class="list-group-item">${employee[i].roleInfo}</li>
+                        <li class="list-group-item">${roleInfo(employee[i])}</li>
                      </ul>
                 </div>`
-                    
-           
     }
+    return card;
 }
 
 const generatePage = function(employee) {
@@ -58,11 +57,12 @@ const generatePage = function(employee) {
         <main>
 
             <div class="container">
-
-            ${createCard(employee)}
-
+                <div class = "row">
+                    <div class = "col-sm-6">
+                        ${createCard(employee)}
+                    </div>
+                </div>
             </div>
-
     </body>
     </html>`
 }

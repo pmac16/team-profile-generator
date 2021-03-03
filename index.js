@@ -56,7 +56,6 @@ const menuOptions = () => {
         } else  if (menuAnswer.role === 'Intern') {
             InternPrompts();
         } else {
-            console.log(employee);
             writeToFile(employee);
             }       
     })
@@ -129,7 +128,7 @@ const InternPrompts = () => {
 };
 
 function writeToFile() {
-    fs.writeFile('./index.html', generatePage(employee), err => {
+    fs.writeFileSync('./index.html', generatePage(employee), err => {
         if(err) throw err;
 
         console.log('Page complete.')
