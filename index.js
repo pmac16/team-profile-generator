@@ -89,7 +89,7 @@ const EngineerPrompts = () => {
         //push the data
         const engineer = new Engineer(engineerAnswers.name, engineerAnswers.email, engineerAnswers.id, engineerAnswers.github);
         employee.push(engineer);
-        console.log(engineer)
+        // console.log(engineer)
         menuOptions();
     })
 };
@@ -122,7 +122,7 @@ const InternPrompts = () => {
         //push the data
         const intern = new Intern(internAnswers.name, internAnswers.email, internAnswers.id, internAnswers.school);
         employee.push(intern);
-        console.log(intern)
+        // console.log(intern)
         menuOptions();
     })
 };
