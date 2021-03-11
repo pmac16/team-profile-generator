@@ -36,6 +36,9 @@
   As a manager, keeping track of all of my employee's information can be challenging. This command-line application allows managers to input team member information. After, an HTML file is generated that displays the information in an easy-to-read format. If a manager/user clicks an email address, then the default email program opens. If a manager/user clicks the GitHub username, then the GitHub profile opens in a new tab. 
 
   ## Walkthrough
+  ![Screenshot of walkthrough video](Screenshot2.png)
+  
+  A walkthrough video showing how this application works can be found [here](https://drive.google.com/file/d/1qPJOJ73JSTpvEy3nwU5NqgUcrFPSHXgQ/view).
 
   ## Screenshot 
 
